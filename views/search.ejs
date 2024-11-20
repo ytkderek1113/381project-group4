@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Results</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5dc;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #8B4513;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 10px 0;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border: 1px solid #8B4513;
+      border-radius: 5px;
+    }
+    img {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+    }
+    button {
+      padding: 5px 10px;
+      background-color: #8B4513;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #A0522D;
+    }
+  </style>
+</head>
+<body>
+  <h1>Search Results</h1>
+  <ul>
+    <% books.forEach(book => { %>
+      <li>
+        <div class="book-info">
+          <strong>
+            <%= book.volumeInfo && book.volumeInfo.title ? book.volumeInfo.title : 'Unknown Title' %>
+          </strong><br>
+          <small>
+            by <%= book.volumeInfo && book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown' %>
+          </small>
+        </div>
+        <form action="/books" method="POST" style="display: inline;">
+          <input type="hidden" name="title" value="<%= book.volumeInfo && book.volumeInfo.title ? book.volumeInfo.title : '' %>">
+          <input type="hidden" name="author" value="<%= book.volumeInfo && book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : '' %>">
+          <input type="hidden" name="genre" value="Unknown"> <!-- Modify this as needed -->
+          <button type="submit">Add</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+  <a href="/books"><button>Back to Books</button></a>
+</body>
+</html>

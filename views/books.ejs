@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Books</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5dc;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    /* Top Navbar Styles */
+    .navbar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      background-color: #8B4513;
+      padding: 20px;
+      border-radius: 0 0 10px 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar h1 {
+      color: #f5f5dc;
+      margin: 0 0 15px;
+      font-size: 2em;
+      text-align: center;
+    }
+
+    .logout-button {
+      position: absolute;
+      right: 20px;
+      top: 10px;
+      padding: 8px 12px;
+      background-color: #A0522D;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .logout-button:hover {
+      background-color: #ffffb2;
+    }
+
+    .navbar form {
+      display: flex;
+      margin: 10px 0;
+      width: 100%;
+      max-width: 600px;
+      flex-wrap: wrap;
+    }
+
+    .navbar input[type="text"] {
+      padding: 10px;
+      flex: 1;
+      min-width: 120px;
+      height: 30px;
+      border: 1px solid #8B4513;
+      border-radius: 5px;
+      margin-right: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .navbar button {
+      padding: 10px 15px;
+      background-color: #f5f5dc;
+      color: #8B4513;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar button:hover {
+      background-color: #ffeb8f;
+    }
+
+    /* Main Content Styles */
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 20px;
+    }
+
+    li {
+      margin: 15px 0;
+      padding: 15px;
+      background-color: #fff; 
+      border: 1px solid #8B4513;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .book-info {
+      flex-grow: 1;
+      padding-right: 10px;
+      min-width: 150px;
+      max-width: 300px;
+      overflow-wrap: break-word;
+      font-size: 1.1em;
+    }
+
+    .highlight {
+      color: #c82020
+    }
+
+    .update-form {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 10px;
+      align-items: center;
+    }
+
+    .update-form input[type="text"] {
+      margin: 5px;
+      width: 120px;
+      flex-grow: 1;
+      height: 30px; 
+      overflow: hidden;
+    }
+
+    .update-form button {
+      padding: 8px 12px;
+      background-color: #8B4513;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-left: 5px;
+    }
+
+    .update-form button:hover {
+      background-color: #A0522D;
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Navigation Bar -->
+  <div class="navbar">
+    <h1>Books</h1>
+    <a href="/logout"><button class="logout-button">Logout</button></a>
+    <!-- Search Form -->
+    <form action="/search" method="GET">
+      <input type="text" name="query" placeholder="Search for books" required>
+      <button type="submit">Search</button>
+    </form>
+    <!-- Add Book Form -->
+    <form action="/books" method="POST">
+      <input type="text" name="title" placeholder="Title" required>
+      <input type="text" name="author" placeholder="Author" required>
+      <input type="text" name="genre" placeholder="Genre" required>
+      <button type="submit">Add Book</button>
+    </form>
+  </div>
+
+  <!-- List of Books -->
+  <ul>
+    <% books.forEach(book => { %>
+      <li>
+        <div class="book-info">
+          <%= book.title %> <span class="highlight"><strong>by</strong></span> <%= book.author %> <span class="highlight"><strong>( <%= book.genre %> )</strong></span>
+        </div>
+        <div class="update-form">
+          <form action="/books/<%= book._id %>?_method=PUT" method="POST">
+            <input type="text" name="title" value="<%= book.title %>" placeholder="New Title" required>
+            <input type="text" name="author" value="<%= book.author %>" placeholder="New Author" required>
+            <input type="text" name="genre" value="<%= book.genre %>" placeholder="New Genre" required>
+            <button type="submit">Update</button>
+          </form>
+          <form action="/books/<%= book._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>
