@@ -7,6 +7,7 @@ const app = express();
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(cookieSession({
   name: 'session',
   keys: ['key1', 'key2']
