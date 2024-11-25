@@ -6,7 +6,7 @@
   - **Students**:
     - Student 1: Choy Ho Hin, 13379485
     - Student 2: Lai Yiu San, 13032350
-    - Student 3: Lau Wing Sing, 1330616
+    - Student 3: Lau Wing Sing, 13330616
     - Student 4: Li Lok Kei, 11994505
     - Student 5: Yuen Tak Kong Derek, 13225367
 
