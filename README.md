@@ -77,7 +77,7 @@
    - **Description**: Retrieves a list of all books.
    - **CURL Command**:
      ```bash
-     curl -X GET http://localhost:3000/api/books
+     curl -X GET http://three81project-group4.onrender.com/api/books
      ```
 2. **Create API**:
    - **Endpoint**: `/api/books`
@@ -85,7 +85,7 @@
    - **Description**: Creates a new book.
    - **CURL Command**:
      ```bash
-     curl -X POST http://localhost:3000/api/books -H "Content-Type: application/json" -d '{"title":"Book Title", "author":"Author Name", "genre":"Genre"}'
+     curl -X POST https://three81project-group4.onrender.com/api/books -H "Content-Type: application/json" -d '{"title":"Book Title", "author":"Author Name", "genre":"Genre"}'
      ```
 3. **Update API**:
    - **Endpoint**: `/api/books/:id`
@@ -93,7 +93,7 @@
    - **Description**: Updates an existing book by ID.
    - **CURL Command**:
      ```bash
-     curl -X PUT http://localhost:3000/api/books/<book_id> -H "Content-Type: application/json" -d '{"title":"Updated Title", "author":"Updated Author", "genre":"Updated Genre"}'
+     curl -X PUT http://three81project-group4.onrender.com/api/books/<book_id> -H "Content-Type: application/json" -d '{"title":"Updated Title", "author":"Updated Author", "genre":"Updated Genre"}'
      ```
 4. **Delete API**:
    - **Endpoint**: `/api/books/:id`
@@ -101,7 +101,7 @@
    - **Description**: Deletes a book by ID.
    - **CURL Command**:
      ```bash
-     curl -X DELETE http://localhost:3000/api/books/<book_id>
+     curl -X DELETE http://three81project-group4.onrender.com/api/books/<book_id>
      ```
 
 ## Notes
