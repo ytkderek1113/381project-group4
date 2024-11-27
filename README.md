@@ -106,5 +106,4 @@
 
 ## Notes
 - Ensure you replace `<book_id>` with the actual ID of the book you want to update or delete.
-- The `README.md` is crucial for understanding the project functions and is essential for grading.
-
+- This is our github link: https://github.com/ytkderek1113/381project-group4
